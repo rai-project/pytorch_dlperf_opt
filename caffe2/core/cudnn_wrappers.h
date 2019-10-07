@@ -158,16 +158,16 @@ class CuDNNWrapper {
         state_idx < CAFFE2_COMPILE_TIME_MAX_CUDNN_STATES, "Invalid state_idx");
     auto& sync_state = cudnn_states()[context_->device_id()][state_idx];
 
-    CUDAGuard dg(context_->device_id());
+    /* CUDAGuard dg(context_->device_id()); */
 
     // We need to serialize execution on the CuDNNState as we can't
     // allow multiple threads to race through the cudaEventRecord
     // calls (so a worker thread might wait on another worker thread's
     // execution)
-    std::lock_guard<std::mutex> g(sync_state.mutex);
-    if (!sync_state.state.get()) {
-      sync_state.state.reset(new CuDNNState(context_->device_id()));
-    }
+    /* std::lock_guard<std::mutex> g(sync_state.mutex); */
+    /* if (!sync_state.state.get()) { */
+    /*   sync_state.state.reset(new CuDNNState(context_->device_id())); */
+    /* } */
     CHECK_NOTNULL(sync_state.state.get())->execute(context_->cuda_stream(), f);
   }
 

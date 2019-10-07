@@ -1,5 +1,7 @@
 #include "caffe2/core/net_async_scheduling.h"
 
+#include <cuda_runtime.h>
+
 #include "caffe2/core/net_async_tracing.h"
 
 namespace caffe2 {

@@ -2,6 +2,9 @@
 
 #include "caffe2/core/operator.h"
 
+
+#include <cuda_runtime.h>
+
 #include <sstream>
 
 C10_DEFINE_string(

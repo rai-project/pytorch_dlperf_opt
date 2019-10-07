@@ -12,6 +12,9 @@
 #include "caffe2/proto/caffe2_pb.h"
 #include "caffe2/utils/proto_utils.h"
 
+
+#include <cuda_runtime.h>
+
 C10_DEFINE_bool(
     caffe2_simple_net_benchmark_run_whole_net,
     true,

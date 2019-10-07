@@ -12,6 +12,10 @@
 #include "caffe2/utils/proto_utils.h"
 #include "caffe2/utils/string_utils.h"
 
+#include "cuda.h"
+
+#include <cuda_runtime.h>
+
 C10_DEFINE_string(
     caffe2_override_executor,
     "",

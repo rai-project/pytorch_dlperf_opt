@@ -9,6 +9,8 @@
 #include <unordered_map>
 #include <vector>
 
+#include "cuda.h"
+
 #include "c10/core/thread_pool.h"
 #include "c10/util/Registry.h"
 #include "caffe2/core/blob.h"
