@@ -80,6 +80,7 @@ ParallelNet::ParallelNet(
   task_graph_->FreezeGraph();
   run_future_ = task_graph_->GetFuture();
   run_future_->SetCallback([this](const AsyncTaskFuture* /* unused */) {
+    cudaDeviceSynchronize();
     StopAllObservers();
     finishRun();
   });

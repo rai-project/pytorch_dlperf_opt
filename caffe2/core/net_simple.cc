@@ -69,6 +69,7 @@ bool SimpleNet::Run() {
       return false;
     }
   }
+  cudaDeviceSynchronize();
   StopAllObservers();
   return true;
 }

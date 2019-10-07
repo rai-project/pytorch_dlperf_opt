@@ -113,11 +113,7 @@ class CuDNNState {
 
   template <typename F>
   void execute(cudaStream_t stream, F&& f) {
-    CUDA_ENFORCE(cudaEventRecord(before_, stream));
-    CUDA_ENFORCE(cudaStreamWaitEvent(stream_, before_, 0));
     f(this);
-    CUDA_ENFORCE(cudaEventRecord(after_, stream_));
-    CUDA_ENFORCE(cudaStreamWaitEvent(stream, after_, 0));
   }
 
  private:

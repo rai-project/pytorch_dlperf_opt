@@ -232,6 +232,7 @@ void AsyncSchedulingNet::finishRun() {
     counters_.ReportRunEnd();
   }
   // notify observers and waiters
+  cudaDeviceSynchronize();
   StopAllObservers();
   running_ = false;
   running_cv_.notify_all();
