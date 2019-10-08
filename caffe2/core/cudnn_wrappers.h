@@ -164,10 +164,10 @@ class CuDNNWrapper {
     // allow multiple threads to race through the cudaEventRecord
     // calls (so a worker thread might wait on another worker thread's
     // execution)
-    /* std::lock_guard<std::mutex> g(sync_state.mutex); */
-    /* if (!sync_state.state.get()) { */
-    /*   sync_state.state.reset(new CuDNNState(context_->device_id())); */
-    /* } */
+    std::lock_guard<std::mutex> g(sync_state.mutex);
+    if (!sync_state.state.get()) {
+      sync_state.state.reset(new CuDNNState(context_->device_id()));
+    }
     CHECK_NOTNULL(sync_state.state.get())->execute(context_->cuda_stream(), f);
   }
 

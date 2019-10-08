@@ -16,7 +16,7 @@
 #include <cudnn.h>
 
 static_assert(
-    CUDNN_VERSION >= 5000,
+    CUDNN_VERSION >= 7500,
     "Caffe2 requires cudnn version 5.0 or above.");
 
 #if CUDNN_VERSION < 6000
